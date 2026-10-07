@@ -2,6 +2,17 @@ from datetime import datetime, timedelta, date
 from typing import List
 import time, random
 from urllib.parse import quote
+from fli.models import (
+    Airport,
+    DateSearchFilters,
+    FlightSegment,
+    MaxStops,
+    PassengerInfo,
+    TripType,
+
+)
+from fli.search import SearchDates
+from fli.models.google_flights.base import LocalizationConfig, Currency
 
 def GoogleFlightsUrl(origin, destination, returnOrigin, outboundDate, returnDate, currency = "EUR"):
     origin = origin.upper()
@@ -11,16 +22,6 @@ def GoogleFlightsUrl(origin, destination, returnOrigin, outboundDate, returnDate
     query = (f"Flights from {origin} to {destination} on {outboundDate}, then from {destination} to {returnOrigin} on {returnDate}")
 
     return f"https://www.google.com/travel/flights?q={quote(query)}&curr={quote(currency)}&hl=en"
-
-from fli.models import (
-    Airport,
-    DateSearchFilters,
-    FlightSegment,
-    MaxStops,
-    PassengerInfo,
-    TripType,
-)
-from fli.search import SearchDates
 
 def SearchFlightsRange(
     origins: List[str],
@@ -76,7 +77,8 @@ def SearchFlightsRange(
     def searchWithRetry(filters, routeDescription):
         for attempt in range(maxRetries + 1):
             try:
-                search = SearchDates()
+                localization = LocalizationConfig(currency=Currency.EUR)
+                search = SearchDates(localization_config=localization)
                 return search.search(filters) or []
             except Exception as e:
                 if not isRetryableError(e):
