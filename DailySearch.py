@@ -8,7 +8,7 @@ def sendTop(flights):
     maxLength = 3500
     message = "Top Flight Searches Today:\n\n"
 
-    for flight in flights:
+    for flight in flights[:20]:
         flightMessage = (
             f"{flight['origin']} -> {flight['destination']} ({flight['outboundDate']})\n"
             f"{flight['destination']} -> {flight['originReturn']} ({flight['returnDate']})\n"
