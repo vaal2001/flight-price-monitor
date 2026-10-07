@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta, date
 from typing import List
 import time, random
-from urllib.parse import quote
 from fli.models import (
     Airport,
     DateSearchFilters,
@@ -12,16 +11,34 @@ from fli.models import (
 
 )
 from fli.search import SearchDates
-from fli.models.google_flights.base import LocalizationConfig, Currency
+from urllib.parse import quote
+from gf_search import build_tfs_multi_city
 
-def GoogleFlightsUrl(origin, destination, returnOrigin, outboundDate, returnDate, currency = "EUR"):
+def GoogleFlightsUrl(origin, destination, returnOrigin, outboundDate, returnDate, currency="EUR", adults=1):
     origin = origin.upper()
     destination = destination.upper()
     returnOrigin = returnOrigin.upper()
 
-    query = (f"Flights from {origin} to {destination} on {outboundDate}, then from {destination} to {returnOrigin} on {returnDate}")
+    outboundDate = str(outboundDate)[:10]
+    returnDate = str(returnDate)[:10]
 
-    return f"https://www.google.com/travel/flights?q={quote(query)}&curr={quote(currency)}&hl=en"
+    tfs = build_tfs_multi_city(
+        segments=[
+            {
+                "from": origin,
+                "to": destination,
+                "date": outboundDate,
+            },
+            {
+                "from": destination,
+                "to": returnOrigin,
+                "date": returnDate,
+            },
+        ],
+        adults=adults,
+    )
+
+    return f"https://www.google.com/travel/flights/search?tfs={tfs}&hl=en&curr={quote(currency)}"
 
 def SearchFlightsRange(
     origins: List[str],
@@ -77,9 +94,13 @@ def SearchFlightsRange(
     def searchWithRetry(filters, routeDescription):
         for attempt in range(maxRetries + 1):
             try:
-                localization = LocalizationConfig(currency=Currency.EUR)
-                search = SearchDates(localization_config=localization)
-                return search.search(filters) or []
+                search = SearchDates()
+                return search.search(
+                    filters,
+                    currency="EUR",
+                    language="en",
+                    country="NL",
+                ) or []
             except Exception as e:
                 if not isRetryableError(e):
                     raise
