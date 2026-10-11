@@ -2,5 +2,4 @@
 .venv/
 venv/
 __pycache__/
-frontend/package-lock.json
 frontend/node_modules
