@@ -135,7 +135,7 @@ def SearchFlightsRange(
                                 FlightSegment(
                                     departure_airport=[[origin, 0]],
                                     arrival_airport=[[destination, 0]],
-                                    # travel_date=chunkStart.strftime("%Y-%m-%d"),
+                                    travel_date=chunkStart.strftime("%Y-%m-%d"),
                                 )
                             ],
                             from_date=chunkStart.strftime("%Y-%m-%d"),
@@ -143,13 +143,16 @@ def SearchFlightsRange(
                         )
 
                         if roundtrip:
+                            returnDate = chunkStart + timedelta(days=tripDays)
+
                             filters.flight_segments.append(
                                 FlightSegment(
                                     departure_airport=[[destination, 0]],
                                     arrival_airport=[[originReturn, 0]],
-                                    # travel_date=chunkStart.strftime("%Y-%m-%d"),
+                                    travel_date=returnDate.strftime("%Y-%m-%d"),
                                 )
                             )
+
                             filters.trip_type = TripType.ROUND_TRIP
                             filters.duration = tripDays
 
