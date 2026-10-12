@@ -1,5 +1,5 @@
 import TripLeg from "./TripLeg";
-import { formatDate, getDuration, getOutboundDestination, getOutboundOrigin, getReturnDestination, getReturnOrigin, getTripValue } from "./utils/utils";
+import { formatDate, formatPrice, getDuration, getOutboundDestination, getOutboundOrigin, getReturnDestination, getReturnOrigin, getTripValue } from "./utils/utils";
 
 export default function TripDetails({ trip, onBack }) {
     const outboundOrigin = getOutboundOrigin(trip);
