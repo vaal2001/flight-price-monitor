@@ -234,7 +234,7 @@ export default function PriceGraph() {
                         <input
                             type="date"
                             value={endDate}
-                            max={startDate || undefined}
+                            min={startDate || undefined}
                             onChange={(event) => setEndDate(event.target.value)}
                         />
                     </label>
