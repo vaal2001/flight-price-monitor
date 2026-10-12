@@ -1,4 +1,5 @@
 import { buildMonths, formatPrice, getAvailableSnapshots, getDate, getOutboundDestination, getOutboundOrigin, getPriceColor, getReturnDestination, getReturnOrigin, getTripTooltip, readTripIdFromHash } from "./utils/utils";
+import { useEffect, useMemo, useState } from 'react'
 
 export default function PriceGraph() {
     const snapshots = import.meta.glob('../../data/*.json', { eager: true, import: 'default'});
