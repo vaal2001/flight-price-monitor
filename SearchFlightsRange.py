@@ -195,12 +195,12 @@ def SearchFlightsRange(
 
 if __name__ == "__main__":
     flights = SearchFlightsRange(
-        origins=["AMS", "RTM", "EIN"],
+        origins=["EIN", "RTM", "AMS"],
         destinations=["ATH"],
         dateFrom=date.today().strftime("%Y-%m-%d"),
-        dateTo=(date.today() + timedelta(days=180)).strftime("%Y-%m-%d"),
+        dateTo=(date.today() + timedelta(days=179)).strftime("%Y-%m-%d"),
         minDays=3,
-        maxDays=10,
+        maxDays=7,
         adults=1,
         roundtrip=True,
         directOnly=True,
