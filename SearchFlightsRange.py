@@ -150,7 +150,7 @@ def SearchFlightsRange(
                                     # travel_date=chunkStart.strftime("%Y-%m-%d"),
                                 )
                             )
-                            # filters.trip_type = TripType.ROUND_TRIP
+                            filters.trip_type = TripType.ROUND_TRIP
                             filters.duration = tripDays
 
                         if directOnly:
