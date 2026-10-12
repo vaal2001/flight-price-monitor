@@ -64,11 +64,11 @@ def DailySearch(searchParams):
 
 if __name__ == "__main__":
     searchParams = {
-        "origins": ["EIN", "RTM", "AMS"],
+        "origins": ["NRN", "DUS", "ANR", "BRU", "EIN", "RTM", "AMS"],
         "destinations": ["ATH"],
         "dateFrom": "2026-12-01",
         "dateTo": "2027-01-31",
-        "minDays": 3,
+        "minDays": 6,
         "maxDays": 7,
         "adults": 1,
         "roundtrip": True,
