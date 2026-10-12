@@ -64,7 +64,7 @@ def DailySearch(searchParams):
 
 if __name__ == "__main__":
     searchParams = {
-        "origins": ["ANR", "BRU", "EIN", "RTM", "AMS"],
+        "origins": ["BRU", "EIN", "RTM", "AMS"],
         "destinations": ["ATH"],
         "dateFrom": "2026-12-01",
         "dateTo": "2027-01-31",
