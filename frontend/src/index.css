@@ -1,0 +1,698 @@
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: #1d2638;
+  background: #f5f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  width: min(1440px, 100%);
+  margin: 0 auto;
+  padding: 34px 30px 48px;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+h1 {
+  margin: 0;
+  color: #172033;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 760;
+  letter-spacing: -0.045em;
+}
+
+.subtitle {
+  margin: 9px 0 0;
+  color: #778197;
+  font-size: 14px;
+}
+
+.snapshot-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 12px 15px;
+  border: 1px solid #e5e9f2;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.snapshot-label {
+  color: #8993a5;
+  font-size: 11px;
+}
+
+.snapshot-info strong {
+  color: #354158;
+  font-size: 13px;
+}
+
+.filters {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid #e7ebf3;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 4px 18px rgb(27 39 65 / 3%);
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.filter-field > span {
+  color: #657188;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.filter-field input {
+  width: 100%;
+  height: 39px;
+  padding: 0 12px;
+  border: 1px solid #dfe5ef;
+  border-radius: 9px;
+  outline: none;
+  background: #fbfcfe;
+  color: #202a3d;
+  font-size: 13px;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.filter-field input:focus {
+  border-color: #8ba5ed;
+  box-shadow: 0 0 0 3px rgb(83 119 219 / 12%);
+}
+
+.search-field {
+  flex: 1 1 200px;
+}
+
+.price-field {
+  flex: 0 1 140px;
+}
+
+.date-field {
+  flex: 1 1 160px;
+  min-width: 145px;
+}
+
+.clear-button {
+  min-height: 39px;
+  padding: 0 14px;
+  border: 1px solid #dfe5ef;
+  border-radius: 9px;
+  background: #fff;
+  color: #56637a;
+  font-size: 12px;
+  font-weight: 650;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.clear-button:hover {
+  border-color: #c8d1e0;
+  background: #f7f9fc;
+}
+
+.price-legend {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 39px;
+  margin-left: auto;
+  color: #778197;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.price-gradient {
+  width: 90px;
+  height: 9px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: linear-gradient(
+    to right,
+    rgb(22, 163, 74),
+    rgb(234, 179, 8),
+    rgb(220, 38, 38)
+  );
+}
+
+.filter-error {
+  margin: 10px 3px 0;
+  color: #c24141;
+  font-size: 12px;
+}
+
+.results-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 23px 2px 12px;
+}
+
+.results-summary > div {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.results-summary strong {
+  color: #1d293d;
+  font-size: 20px;
+  font-weight: 760;
+}
+
+.results-summary span {
+  color: #7b8598;
+  font-size: 12px;
+}
+
+.results-summary .range-summary {
+  color: #59667c;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.timeline-card {
+  overflow: hidden;
+  border: 1px solid #e6eaf2;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 5px 24px rgb(27 39 65 / 4%);
+}
+
+.timeline-scroll {
+  overflow-x: auto;
+  padding: 0 20px 14px;
+}
+
+.timeline {
+  min-width: 760px;
+}
+
+.month-header {
+  display: flex;
+  height: 47px;
+  border-bottom: 1px solid #e9edf4;
+}
+
+.month-label {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-left: 9px;
+  overflow: hidden;
+  border-left: 1px solid #edf0f6;
+  color: #67748a;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.timeline-body {
+  position: relative;
+}
+
+.month-grid {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  pointer-events: none;
+}
+
+.month-column {
+  height: 100%;
+  flex-shrink: 0;
+  border-left: 1px solid #edf0f6;
+}
+
+.stacked {
+  position: relative;
+  min-height: 70px;
+}
+
+.stacked-bar {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 19px;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0 5px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
+  transition: filter 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+}
+
+.stacked-bar:hover {
+  z-index: 5;
+  filter: brightness(1.07) saturate(1.05);
+  box-shadow: 0 2px 7px rgb(23 34 52 / 20%);
+  transform: scaleY(1.12);
+}
+
+.stacked-bar:focus-visible {
+  z-index: 6;
+  outline: 2px solid #253c68;
+  outline-offset: 2px;
+}
+
+.bar-price {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 19px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-shadow: 0 1px 1px rgb(0 0 0 / 12%);
+}
+
+.timeline-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 20px;
+  border-top: 1px solid #edf0f6;
+  color: #8791a3;
+  font-size: 10px;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 64px 20px;
+  border: 1px solid #e6eaf2;
+  border-radius: 15px;
+  background: #fff;
+  text-align: center;
+}
+
+.empty-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  margin-bottom: 13px;
+  border-radius: 14px;
+  background: #edf3ff;
+  color: #5074ca;
+  font-size: 23px;
+}
+
+.empty-state h2 {
+  margin: 0;
+  color: #263249;
+  font-size: 17px;
+}
+
+.empty-state p {
+  margin: 8px 0 18px;
+  color: #818b9e;
+  font-size: 13px;
+}
+
+/* Trip details page */
+
+.details-app {
+  max-width: 1000px;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 28px;
+  padding: 10px 14px;
+  border: 1px solid #dfe5ef;
+  border-radius: 9px;
+  background: #fff;
+  color: #48566d;
+  font-size: 13px;
+  font-weight: 650;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.back-button:hover {
+  border-color: #c8d1e0;
+  background: #f7f9fc;
+}
+
+.back-button span {
+  font-size: 17px;
+}
+
+.details-header {
+  margin-bottom: 24px;
+}
+
+.trip-details-card {
+  overflow: hidden;
+  border: 1px solid #e5eaf2;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 6px 28px rgb(27 39 65 / 5%);
+}
+
+.trip-leg + .trip-leg {
+  border-top: 1px solid #e9edf4;
+}
+
+.trip-leg-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 32px 0;
+  background: #fbfcff;
+}
+
+.trip-leg-heading .detail-label {
+  margin-bottom: 0;
+  color: #6078a4;
+}
+
+.trip-leg-date {
+  color: #657188;
+  font-size: 12px;
+  text-align: right;
+}
+
+.trip-route {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 70px minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+  padding: 22px 32px 30px;
+  background: #fbfcff;
+}
+
+.airport {
+  min-width: 0;
+}
+
+.detail-label {
+  display: block;
+  margin-bottom: 9px;
+  color: #8993a5;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.airport h2 {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: #1e2a40;
+  font-size: clamp(21px, 3vw, 30px);
+  font-weight: 760;
+  letter-spacing: -0.04em;
+}
+
+.route-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  border-bottom: 1px dashed #b9c5d8;
+  color: #607cb8;
+  font-size: 20px;
+}
+
+.route-connector span {
+  position: relative;
+  top: 12px;
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid #e0e8f6;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.trip-price-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 25px 32px;
+  border-top: 1px solid #e9edf4;
+  border-bottom: 1px solid #e9edf4;
+}
+
+.trip-price-panel .detail-label {
+  margin-bottom: 3px;
+}
+
+.trip-price-panel strong {
+  color: #21834d;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.price-note {
+  color: #8a94a5;
+  font-size: 11px;
+}
+
+.trip-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.detail-item {
+  min-width: 0;
+  padding: 23px 32px;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.detail-item:nth-child(odd) {
+  border-right: 1px solid #edf0f5;
+}
+
+.detail-item .detail-label {
+  margin-bottom: 8px;
+}
+
+.detail-item strong {
+  color: #2b374c;
+  font-size: 14px;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+
+.booking-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 32px;
+}
+
+.booking-section p {
+  max-width: 470px;
+  margin: 0;
+  color: #788398;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.booking-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  flex-shrink: 0;
+  min-height: 42px;
+  padding: 0 17px;
+  border-radius: 10px;
+  background: #243c68;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 150ms ease;
+}
+
+.booking-button:hover {
+  background: #304f86;
+}
+
+.booking-unavailable {
+  justify-content: flex-start;
+  color: #8a94a5;
+  font-size: 12px;
+}
+
+@media (max-width: 800px) {
+  .app {
+    padding: 24px 18px 36px;
+  }
+
+  .filters {
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .price-legend {
+    margin-left: 0;
+  }
+
+  .timeline-scroll {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding: 22px 12px 30px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 21px;
+  }
+
+  .snapshot-info {
+    align-items: flex-start;
+  }
+
+  .search-field,
+  .price-field,
+  .date-field {
+    flex: 1 1 100%;
+  }
+
+  .clear-button {
+    flex: 0 0 auto;
+  }
+
+  .price-legend {
+    gap: 4px;
+    min-height: 30px;
+    font-size: 8px;
+  }
+
+  .price-gradient {
+    width: 48px;
+  }
+
+  .results-summary {
+    margin-top: 19px;
+  }
+
+  .timeline-footer {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .bar-price {
+    font-size: 10px;
+  }
+
+  .trip-leg-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 18px 0;
+  }
+
+  .trip-leg-date {
+    text-align: left;
+  }
+
+  .trip-route {
+    grid-template-columns: minmax(0, 1fr) 36px minmax(0, 1fr);
+    gap: 9px;
+    padding: 22px 18px 25px;
+  }
+
+  .route-connector {
+    font-size: 16px;
+  }
+
+  .route-connector span {
+    width: 30px;
+    height: 30px;
+  }
+
+  .trip-price-panel {
+    padding: 22px 20px;
+  }
+
+  .trip-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-item {
+    padding: 19px 20px;
+    border-right: none !important;
+  }
+
+  .booking-section {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 22px 20px;
+  }
+
+  .booking-button {
+    width: 100%;
+  }
+}
