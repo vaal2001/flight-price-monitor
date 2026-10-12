@@ -1,4 +1,4 @@
-import { buildMonths, formatPrice, getAvailableSnapshots, getDate, getOutboundDestination, getOutboundOrigin, getPriceColor, getReturnDestination, getReturnOrigin, getTripDates, getTripTooltip, readTripIdFromHash } from "./utils/utils";
+import { assignLanes, buildMonths, formatPrice, getAvailableSnapshots, getDate, getOutboundDestination, getOutboundOrigin, getPriceColor, getReturnDestination, getReturnOrigin, getTripDates, getTripTooltip, readTripIdFromHash } from "./utils/utils";
 import { useEffect, useMemo, useState } from 'react'
 
 export default function PriceGraph() {
