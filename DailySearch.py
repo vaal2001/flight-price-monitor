@@ -67,7 +67,7 @@ if __name__ == "__main__":
         "origins": ["AMS", "RTM", "EIN"],
         "destinations": ["ATH"],
         "dateFrom": date.today().strftime("%Y-%m-%d"),
-        "dateTo": (date.today() + timedelta(days=180)).strftime("%Y-%m-%d"),
+        "dateTo": (date.today() + timedelta(days=179)).strftime("%Y-%m-%d"),
         "minDays": 3,
         "maxDays": 10,
         "adults": 1,
