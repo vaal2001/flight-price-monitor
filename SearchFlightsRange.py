@@ -160,6 +160,8 @@ def SearchFlightsRange(
                             time.sleep(random.uniform(3.0, 5.5))
                             results = searchWithRetry(filters, routeDescription)
 
+                            print(f"Returned {len(results)} results for {origin.name} -> {destination.name} -> {originReturn.name}")
+
                             for result in results:
                                 dateValues = getattr(result, "date", None)
 
