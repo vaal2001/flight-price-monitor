@@ -199,7 +199,7 @@ if __name__ == "__main__":
     flights = SearchFlightsRange(
         origins=["EIN", "RTM", "AMS"],
         destinations=["ATH"],
-        returns=["EIN", "RTM", "AMS"]
+        returns=["EIN", "RTM", "AMS"],
         dateFrom=date.today().strftime("%Y-%m-%d"),
         dateTo=(date.today() + timedelta(days=179)).strftime("%Y-%m-%d"),
         minDays=3,
