@@ -40,23 +40,21 @@ export default function PriceGraph() {
     const allTrips = useMemo(() => snapshot.trips.map((trip, index) => ({ ...trip, _tripId: String(index)})), [snapshot])
 
     const trips = useMemo(() => {
-        const query = search.trim().toLowerCase()
+        const queryOrigin = searchOrigin.trim().toLowerCase();
+        const queryReturn = searchReturn.trim().toLowerCase();
         const limit = maxPrice === '' ? Infinity : Number(maxPrice)
         const rangeStart = getDate(startDate)
         const rangeEnd = getDate(endDate)
     
         return allTrips.filter((trip) => {
           const origin = String(getOutboundOrigin(trip)).toLowerCase()
-          const destination = String(getOutboundDestination(trip)).toLowerCase()
-          const returnOrigin = String(getReturnOrigin(trip)).toLowerCase()
           const returnDestination = String(getReturnDestination(trip)).toLowerCase()
-    
-          const matchesSearch =
-            !query ||
-            origin.includes(query) ||
-            destination.includes(query) ||
-            returnOrigin.includes(query) ||
-            returnDestination.includes(query)
+
+          const matchesSearch = 
+            (!queryOrigin && !queryReturn) ||
+            (!queryOrigin && returnDestination.includes(queryReturn)) ||
+            (origin.includes(queryOrigin) && !queryReturn) ||
+            (origin.includes(queryOrigin) && returnDestination.includes(queryReturn))
     
           const price = Number(trip.price)
           const matchesPrice =
