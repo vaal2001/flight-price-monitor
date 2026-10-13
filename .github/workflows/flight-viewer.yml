@@ -1,7 +1,9 @@
-
 name: Deploy flight viewer
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
   workflow_run:
     workflows:
@@ -20,11 +22,11 @@ concurrency:
 
 jobs:
   build:
-  if: >-
-    ${{
-      github.event_name != 'workflow_run' ||
-      github.event.workflow_run.conclusion == 'success'
-    }}
+    if: >-
+      ${{
+        github.event_name != 'workflow_run' ||
+        github.event.workflow_run.conclusion == 'success'
+      }}
     runs-on: ubuntu-latest
 
     steps:
@@ -39,11 +41,11 @@ jobs:
       - name: Show repository files
         run: ls -la
 
-      - name: Install frontend dependencies
+      - name: Install flight-viewer-module dependencies
         working-directory: flight-viewer-module
         run: npm ci
 
-      - name: Build frontend
+      - name: Build flight-viewer-module
         working-directory: flight-viewer-module
         run: npm run build
 
