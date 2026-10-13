@@ -7,7 +7,8 @@ export default function PriceGraph() {
     const availableSnapshots = useMemo(() => getAvailableSnapshots(snapshots), []);
     const [selectedSnapshotPath, setSelectedSnapshotPath] = useState('');
     const snapshot = availableSnapshots.find((item) => item.path === selectedSnapshotPath) ?? availableSnapshots[0] ?? { path: '', date: '', trips: [] };
-    const [search, setSearch] = useState('');
+    const [searchOrigin, setSearchOrigin] = useState('');
+    const [searchReturn, setSearchReturn] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
@@ -200,12 +201,22 @@ export default function PriceGraph() {
 
                 <section className="filters">
                     <label className="filter-field search-field">
-                        <span>Search Route</span>
-                        <input
+                        <span>Search Origin</span>
+                        <input 
                             type="search"
-                            placeholder="Origin or destination"
-                            value={search}
-                            onChange={(event) => setSearch(event.target.value)}
+                            placeholder="Origin airport"
+                            value={searchOrigin}
+                            onChange={(event) => setSearchOrigin(event.target.value)}
+                        />
+                    </label>
+
+                    <label className="filter-field search-field">
+                        <span>Search Return</span>
+                        <input 
+                            type="search"
+                            placeholder="Return airport"
+                            value={searchReturn}
+                            onChange={(event) => setSearchReturn(event.target.value)}
                         />
                     </label>
 

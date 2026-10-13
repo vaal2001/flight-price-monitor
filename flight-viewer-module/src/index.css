@@ -130,16 +130,16 @@ h1 {
 }
 
 .search-field {
-  flex: 1 1 200px;
+  flex: 1 1 100px;
 }
 
 .price-field {
-  flex: 0 1 140px;
+  flex: 0 1 100px;
 }
 
 .date-field {
-  flex: 1 1 160px;
-  min-width: 145px;
+  flex: 1 1 100px;
+  min-width: 100px;
 }
 
 .clear-button {
