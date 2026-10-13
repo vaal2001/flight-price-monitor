@@ -248,7 +248,7 @@ export default function PriceGraph() {
                         Clear filters
                     </button>
 
-                    <div classname="price-legend">
+                    <div className="price-legend">
                         <span>Cheaper</span>
                         <div className="price-gradient" />
                         <span>More expensive</span>

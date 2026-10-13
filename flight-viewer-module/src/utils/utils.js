@@ -1,21 +1,42 @@
 export function getAvailableSnapshots(snapshots) {
-  return Object.entries(snapshots)
-    .map(([path, snapshot]) => {
-      const trips = Array.isArray(snapshot)
-        ? snapshot
-        : snapshot?.data?.results ??
-          snapshot?.results ??
-          snapshot?.flights ??
-          snapshot?.trips ??
-          []
+  const grouped = new Map();
 
-      return {
-        path,
-        date: path.match(/\d{4}-\d{2}-\d{2}/)?.[0] ?? path,
-        trips: Array.isArray(trips) ? trips : [],
-      }
-    })
-    .sort((a, b) => b.path.localeCompare(a.path))
+  for (const [path, module] of Object.entries(snapshots)) {
+    const filename = path.split("/").pop();
+
+    // Matches YYYY-MM-DD.json and YYYY-MM-DD_config_1.json
+    const match = filename.match(
+      /^(\d{4}-\d{2}-\d{2})(?:_.*)?\.json$/
+    );
+
+    if (!match) continue;
+
+    const snapshotDate = match[1];
+    const data = module?.default ?? module;
+
+    if (!grouped.has(snapshotDate)) {
+      grouped.set(snapshotDate, {
+        date: snapshotDate,
+        path: snapshotDate,
+        trips: [],
+        files: [],
+      });
+    }
+
+    const snapshot = grouped.get(snapshotDate);
+
+    if (Array.isArray(data?.results)) {
+      snapshot.trips.push(...data.results);
+    } else if (Array.isArray(data?.trips)) {
+      snapshot.trips.push(...data.trips);
+    }
+
+    snapshot.files.push(path);
+  }
+
+  return Array.from(grouped.values()).sort((a, b) =>
+    b.date.localeCompare(a.date)
+  );
 }
 
 export function getTripValue(trip, ...keys) {
