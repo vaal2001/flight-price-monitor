@@ -73,7 +73,7 @@ export default function PriceGraph() {
     
           return matchesSearch && matchesPrice && matchesDateRange
         })
-      }, [allTrips, search, maxPrice, startDate, endDate]);
+      }, [allTrips, searchOrigin, searchReturn, maxPrice, startDate, endDate]);
 
     const priceRange = useMemo(() => {
         const prices = trips.map((trip) => Number(trip.price)).filter(Number.isFinite)
