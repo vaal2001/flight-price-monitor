@@ -43,6 +43,7 @@ def GoogleFlightsUrl(origin, destination, returnOrigin, outboundDate, returnDate
 def SearchFlightsRange(
     origins: List[str],
     destinations: List[str],
+    returns: List[str],
     dateFrom: str,
     dateTo: str,
     minDays: int,
@@ -62,6 +63,7 @@ def SearchFlightsRange(
 
     originAirports = [getAirport(code) for code in origins]
     destinationAirports = [getAirport(code) for code in destinations]
+    returnAirports = [getAirport(code) for code in returns]
 
     start = datetime.strptime(dateFrom, "%Y-%m-%d").date()
     end = datetime.strptime(dateTo, "%Y-%m-%d").date()
@@ -122,7 +124,7 @@ def SearchFlightsRange(
 
     for origin in originAirports:
         for destination in destinationAirports:
-            for originReturn in originAirports:
+            for originReturn in returnAirports:
                 for tripDays in range(minDays, maxDays + 1):
                     for chunkStart, chunkEnd in dateChunks(start, end):
                         routeDescription = f"{origin.name} -> {destination.name} -> {originReturn.name} ({tripDays} days, {chunkStart} to {chunkEnd})"
@@ -197,6 +199,7 @@ if __name__ == "__main__":
     flights = SearchFlightsRange(
         origins=["EIN", "RTM", "AMS"],
         destinations=["ATH"],
+        returns=["EIN", "RTM", "AMS"]
         dateFrom=date.today().strftime("%Y-%m-%d"),
         dateTo=(date.today() + timedelta(days=179)).strftime("%Y-%m-%d"),
         minDays=3,

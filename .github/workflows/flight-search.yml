@@ -1,0 +1,93 @@
+name: Sequential Flight Search
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: flight-search
+  cancel-in-progress: false
+
+jobs:
+  search:
+    name: Search ${{ matrix.config }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        config:
+          - .config_1
+          - .config_2
+          - .config_3
+          - .config_4
+          - .config_5
+          - .config_6
+          - .config_7
+          - .config_8
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python      
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        working-directory: flight-finder-module
+        run: pip install -r requirements.txt
+
+      - name: Run flight Search
+        working-directory: flight-finder-module
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python DailySearch.py --config "${{ matrix.config }}"
+
+      - name: Upload this configuration's results
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-${{ matrix.config }}
+          path: data/*.json
+          if-no-files-found: error
+          retention-days: 1
+
+      - name: Wait before next configuration
+        if: success()
+        run: sleep 60
+
+  collect-results:
+    name: Save results to repository
+    needs: search
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Download all search results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: results-*
+          path: data
+          merge-multiple: true
+
+      - name: Commit search results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply-github.com"
+
+          git add data
+
+          if git diff --cached --quiet; then
+            echo "No new search results to commmit."
+          else
+            git commit -m "Add flight search results for $(date -u +%Y-%m-%d)"
+            git push
+          fi

@@ -1,0 +1,6 @@
+[flight_search]
+origins = ["BRU"]
+destinations = ["ATH"]
+returns = ["BRU", "EIN", "RTM", "AMS"]
+minDays = 8
+maxDays = 12

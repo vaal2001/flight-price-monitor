@@ -1,5 +1,4 @@
 .env
-.venv/
-venv/
-__pycache__/
-frontend/node_modules
+flight-finder-module/venv
+flight-finder-module/.venv
+flight-viewer-module/node_modules

@@ -1,8 +1,27 @@
 from datetime import date, timedelta
 from pathlib import Path
 import json
+import configparser
+import argparse
 from SendTelegramMessage import SendTelegramMessage
 from SearchFlightsRange import SearchFlightsRange
+
+def loadConfig(configName):
+    configPath = Path(__file__).resolve().parent / "configs" / configName
+
+    config = configparser.ConfigParser()
+    if not config.read(configPath):
+        raise FileNotFoundError(f"Config file not found: {configPath}")
+
+    settings = config["flight_search"]
+
+    return {
+        "origins": json.loads(settings["origins"]),
+        "destinations": json.loads(settings["destinations"]),
+        "returns": json.loads(settings["returns"]),
+        "minDays": settings.getint("minDays"),
+        "maxDays": settings.getint("maxDays"),
+    }
 
 def sendTop(flights):
     maxLength = 3500
@@ -34,6 +53,7 @@ def DailySearch(searchParams):
     flights = SearchFlightsRange(
         origins=searchParams['origins'],
         destinations=searchParams['destinations'],
+        returns=searchParams['returns'],
         dateFrom=searchParams['dateFrom'],
         dateTo=searchParams['dateTo'],
         minDays=searchParams['minDays'],
@@ -44,10 +64,11 @@ def DailySearch(searchParams):
         maxRetries=searchParams['maxRetries'],
     )
     
-    dataDirectory = Path("data")
+    dataDirectory = Path(__file__).resolve().parent.parent / "data"
     dataDirectory.mkdir(parents=True, exist_ok=True)
 
-    outputFile = dataDirectory / f"{date.today().isoformat()}.json"
+    configName = searchParams["configName"].lstrip(".")
+    outputFile = dataDirectory / f"{date.today().isoformat()}_{configName}.json"
 
     data = {
         "searchDate": date.today().isoformat(),
@@ -60,16 +81,18 @@ def DailySearch(searchParams):
     print()
     print(f"Saved {len(flights)} results to: {outputFile}")
 
-    sendTop(flights)
+    # sendTop(flights)
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", required=True)
+    args = parser.parse_args()
+
     searchParams = {
-        "origins": ["BRU", "EIN", "RTM", "AMS"],
-        "destinations": ["ATH"],
-        "dateFrom": "2026-12-01",
-        "dateTo": "2027-01-31",
-        "minDays": 5,
-        "maxDays": 8,
+        **loadConfig(args.config),
+        "configName": args.config,
+        "dateFrom": date.today().isoformat(),
+        "dateTo": (date.today() + timedelta(days=179)).isoformat(),
         "adults": 1,
         "roundtrip": True,
         "directOnly": True,
