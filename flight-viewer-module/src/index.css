@@ -579,7 +579,7 @@ h1 {
   font-size: 12px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 10000px) {
   .app {
     padding: 24px 18px 36px;
   }
