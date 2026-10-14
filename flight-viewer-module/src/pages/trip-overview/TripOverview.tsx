@@ -73,7 +73,7 @@ export default function TripOverview() {
         <main className="app details-app">
             <button
                 className="back-button"
-                onClick={() => {navigate("/overview")}}
+                onClick={() => navigate(-1)}
                 type="button"
             >
                 <span aria-hidden="true">←</span> Back to timeline

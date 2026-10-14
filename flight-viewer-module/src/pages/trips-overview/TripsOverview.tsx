@@ -2,39 +2,62 @@ import { useEffect, useState } from "react";
 import { assignLanes, buildMonths, formatPrice, getAllSnapshots, getDate, getHighestPrice, getLowestPrice, getPriceColor, loadTrips } from "./utils/tripsOverviewUtils";
 import type { Timeline, Trip } from "../../models/tripModel";
 import "./tripsOverview.css";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 
 export default function TripsOverview() {
-    const [availableSnapshots] = useState<string[]>(() => getAllSnapshots());
-    const [selectedSnapshotName, setSelectedSnapshotName] = useState<string>(availableSnapshots[0] ?? "");
-    const [selectedTrips, setSelectedTrips] = useState<Trip[]>([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [searchOrigin, setSearchOrigin] = useState<string>("");
-    const [searchReturn, setSearchReturn] = useState<string>("");
-    const [maxPrice, setMaxPrice] = useState<string>("");
-    const [startDate, setStartDate] = useState<string>("");
-    const [endDate, setEndDate] = useState<string>("");
-    const [tripLength, setTripLength] = useState<string>("");
-    const [invalidDateRange, setInvalidDateRange] = useState<boolean>(false);
-    const [minPriceRange, setMinPriceRange] = useState<number>(getLowestPrice(selectedTrips));
-    const [maxPriceRange, setMaxPriceRange] = useState<number>(getHighestPrice(selectedTrips));
-    const [currency, setCurrency] = useState<string>(selectedTrips[0]?.currency);
-    const [months, setMonths] = useState<{ date: Date; label: string }[]>(buildMonths(selectedTrips));
-    const [timeline, setTimeline] = useState<Timeline>({
-        lanes: [],
-        laneCount: 0
-    });
-    const [allTrips, setAllTrips] = useState<Trip[]>([]);
+    const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
 
+    const getParam = (key: string, fallback = "") => searchParams.get(key) ?? fallback;
+
+    const [availableSnapshots] = useState<string[]>(() => getAllSnapshots());
+    const [selectedSnapshotName, setSelectedSnapshotName] = useState<string>(getParam("snapshot") || (availableSnapshots[0] ?? ""));
+    const [selectedTrips, setSelectedTrips] = useState<Trip[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const searchOrigin = getParam("origin");
+    const searchReturn = getParam("return");
+    const maxPrice = getParam("maxPrice");
+    const startDate = getParam("startDate");
+    const endDate = getParam("endDate");
+    const tripLength = getParam("tripLength");
+
+    const [invalidDateRange, setInvalidDateRange] = useState(false);
+    const [minPriceRange, setMinPriceRange] = useState<number>(0);
+    const [maxPriceRange, setMaxPriceRange] = useState<number>(0);
+    const [currency, setCurrency] = useState<string>("EUR");
+    const [months, setMonths] = useState<{ date: Date; label: string }[]>([]);
+    const [timeline, setTimeline] = useState<Timeline>({ lanes: [], laneCount: 0 });
+    const [allTrips, setAllTrips] = useState<Trip[]>([]);
+
+    const setFilter = (key: string, value: string) => {
+        const next = new URLSearchParams(searchParams);
+        if (value === "") {
+            next.delete(key);
+        } else {
+            next.set(key, value);
+        }
+
+        if (selectedSnapshotName) {
+            next.set("snapshot", selectedSnapshotName);
+        }
+        setSearchParams(next, { replace: true });
+    };
+
     const clearFilters = () => {
-        setSearchOrigin("");
-        setSearchReturn("");
-        setMaxPrice("");
-        setStartDate("");
-        setEndDate("");
-        setTripLength("");
-    } 
+        const next = new URLSearchParams();
+        if (selectedSnapshotName) {
+            next.set("snapshot", selectedSnapshotName);
+        }
+        setSearchParams(next, { replace: true });
+    };
+
+    const handleSnapshotChange = (value: string) => {
+        setSelectedSnapshotName(value);
+        const next = new URLSearchParams(searchParams);
+        next.set("snapshot", value);
+        setSearchParams(next, { replace: true });
+    };
 
     const getTotalDaysRange = (months: { date: Date; label: string }[]) => {
         return months.reduce((total, month) => {
@@ -167,7 +190,7 @@ export default function TripsOverview() {
                         className="snapshot-select"
                         value={selectedSnapshotName}
                         disabled={availableSnapshots.length === 0 || isLoading}
-                        onChange={(e) => setSelectedSnapshotName(e.target.value)}
+                        onChange={(e) => handleSnapshotChange(e.target.value)}
                         style={{
                             maxWidth: "100%",
                             minWidth: "190px",
@@ -202,7 +225,7 @@ export default function TripsOverview() {
                         type="search"
                         placeholder="Origin airport"
                         value={searchOrigin}
-                        onChange={(event) => setSearchOrigin(event.target.value)}
+                        onChange={(event) => setFilter("origin", event.target.value)}
                     />
                 </label>
 
@@ -212,7 +235,7 @@ export default function TripsOverview() {
                         type="search"
                         placeholder="Return airport"
                         value={searchReturn}
-                        onChange={(event) => setSearchReturn(event.target.value)}
+                        onChange={(event) => setFilter("return", event.target.value)}
                     />
                 </label>
 
@@ -223,7 +246,7 @@ export default function TripsOverview() {
                         min="0"
                         placeholder="Any price"
                         value={maxPrice}
-                        onChange={(event) => setMaxPrice(event.target.value)}
+                        onChange={(event) => setFilter("maxPrice", event.target.value)}
                     />
                 </label>
 
@@ -234,7 +257,7 @@ export default function TripsOverview() {
                         min="0"
                         placeholder="Trip Days"
                         value={tripLength}
-                        onChange={(event) => setTripLength(event.target.value)}
+                        onChange={(event) => setFilter("tripLength", event.target.value)}
                     />
                 </label>
 
@@ -244,7 +267,7 @@ export default function TripsOverview() {
                         type="date"
                         value={startDate}
                         max={endDate || undefined}
-                        onChange={(event) => setStartDate(event.target.value)}
+                        onChange={(event) => setFilter("startDate", event.target.value)}
                     />
                 </label>
 
@@ -254,7 +277,7 @@ export default function TripsOverview() {
                         type="date"
                         value={endDate}
                         min={startDate || undefined}
-                        onChange={(event) => setEndDate(event.target.value)}
+                        onChange={(event) => setFilter("endDate", event.target.value)}
                     />
                 </label>
 
@@ -371,7 +394,7 @@ export default function TripsOverview() {
                                                     top: `${item.lane * 22 + 3}px`,
                                                     backgroundColor: barColor,
                                                 }}
-                                                title={`${trip.origin} → ${trip.destination} | ${price}`}
+                                                title={`${trip.origin} → ${trip.destination} → ${trip.return} | ${price} (${trip.days})`}
                                                 aria-label={`${trip.origin} to ${trip.destination}, ${price}`}
                                                 onClick={() => {
                                                     const params = new URLSearchParams({
