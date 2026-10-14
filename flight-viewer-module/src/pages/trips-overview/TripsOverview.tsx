@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { assignLanes, buildMonths, formatPrice, getAllSnapshots, getDate, getHighestPrice, getLowestPrice, getPriceColor, loadTrips } from "./utils/tripsOverviewUtils";
 import type { Timeline, Trip } from "../../models/tripModel";
 import "./tripsOverview.css";
+import { useNavigate } from "react-router";
 
 export default function TripsOverview() {
     const [availableSnapshots] = useState<string[]>(() => getAllSnapshots());
@@ -24,6 +25,7 @@ export default function TripsOverview() {
         laneCount: 0
     });
     const [allTrips, setAllTrips] = useState<Trip[]>([]);
+    const navigate = useNavigate();
 
     const clearFilters = () => {
         setSearchOrigin("");
@@ -379,7 +381,7 @@ export default function TripsOverview() {
                                                         days: String(trip.days),
                                                     });
 
-                                                    window.location.href = `/flight-price-monitor/trip-overview?${params.toString()}`
+                                                    navigate(`/trip-overview?${params.toString()}`)
                                                 }}
                                                 type="button"
                                             >

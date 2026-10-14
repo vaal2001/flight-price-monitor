@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import TripLeg from "./components/TripLeg";
 import type { SearchedTrip } from "../../models/tripModel";
 import { formatDate, loadAllTripsSortedBySearchDate } from "./utils/tripOverviewUtils";
@@ -17,6 +17,7 @@ export default function TripOverview() {
     const outbound = searchParams.get("outbound") ?? "";
     const daysParam = searchParams.get("days");
     const days = daysParam === null ? NaN : Number(daysParam);
+    const navigate = useNavigate();
 
     useEffect(() => {
         let cancelled = false;
@@ -72,7 +73,7 @@ export default function TripOverview() {
         <main className="app details-app">
             <button
                 className="back-button"
-                onClick={() => {window.location.href = "/flight-price-monitor/overview";}}
+                onClick={() => {navigate("/overview")}}
                 type="button"
             >
                 <span aria-hidden="true">←</span> Back to timeline
