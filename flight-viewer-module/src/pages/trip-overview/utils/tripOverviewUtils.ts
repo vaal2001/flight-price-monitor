@@ -1,4 +1,5 @@
-import type { SearchedTrip, Trip } from "../../../models/tripModel";
+import type { SearchedTrip, StarredTrip, Trip } from "../../../models/tripModel";
+import { getAllStarred } from "../../trips-overview/utils/tripsOverviewUtils";
 
 export function formatDate(value: string | Date) {
     const date = value instanceof Date ? value : new Date(value);
@@ -66,4 +67,33 @@ export async function loadAllTripsSortedBySearchDate(): Promise<SearchedTrip[]> 
         .sort(
             (a, b) => b.searchDate.getTime() - a.searchDate.getTime()
         );
+}
+
+export function addStarred(trip: StarredTrip) {
+    const trips = getAllStarred();
+    const alreadyStarred = trips.some(
+        (t) => 
+            t.origin === trip.origin &&
+            t.return === trip.return &&
+            t.outbound.getTime() === trip.outbound.getTime() &&
+            t.days === trip.days
+    );
+
+    if (alreadyStarred) return;
+
+    localStorage.setItem("starredTrips", JSON.stringify([ ...trips, trip ]));
+}
+
+export function removeStarred(trip: StarredTrip) {
+    const trips = getAllStarred().filter(
+        (t) => 
+            !(
+                t.origin === trip.origin &&
+                t.return === trip.return &&
+                t.outbound.getTime() === trip.outbound.getTime() &&
+                t.days === trip.days
+            )
+    );
+
+    localStorage.setItem("starredTrips", JSON.stringify(trips));
 }

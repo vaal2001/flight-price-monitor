@@ -696,3 +696,33 @@ h1 {
     width: 100%;
   }
 }
+
+.star-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    margin-bottom: 20px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: white;
+    color: #374151;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.star-button:hover {
+    background: #f3f4f6;
+}
+
+.star-button.is-starred {
+    color: #92400e;
+    background: #fffbeb;
+    border-color: #f59e0b;
+}
+
+.star-button span {
+    font-size: 1.3rem;
+}

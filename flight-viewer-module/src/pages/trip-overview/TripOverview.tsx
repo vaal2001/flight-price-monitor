@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 import TripLeg from "./components/TripLeg";
-import type { SearchedTrip } from "../../models/tripModel";
-import { formatDate, loadAllTripsSortedBySearchDate } from "./utils/tripOverviewUtils";
-import { formatPrice } from "../trips-overview/utils/tripsOverviewUtils";
+import type { SearchedTrip, StarredTrip } from "../../models/tripModel";
+import { addStarred, formatDate, loadAllTripsSortedBySearchDate, removeStarred } from "./utils/tripOverviewUtils";
+import { formatPrice, getAllStarred } from "../trips-overview/utils/tripsOverviewUtils";
 import "./tripOverview.css";
 import PriceHistory from "./components/PriceHistory";
 
@@ -11,6 +11,7 @@ export default function TripOverview() {
     const [searchParams] = useSearchParams();
     const [trips, setTrips] = useState<SearchedTrip[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isStarred, setIsStarred] = useState(false);
 
     const origin = searchParams.get("origin") ?? "";
     const returnAirport = searchParams.get("return") ?? "";
@@ -69,6 +70,49 @@ export default function TripOverview() {
 
     const latestTrip = trips[0]?.trip;
 
+    useEffect(() => {
+        if (!latestTrip) {
+            setIsStarred(false);
+            return;
+        }
+
+        const starredTrip: StarredTrip = {
+            origin: latestTrip.origin,
+            return: latestTrip.return,
+            outbound: latestTrip.outbound,
+            days: latestTrip.days
+        };
+
+        const exists = getAllStarred().some(
+            (trip) => 
+                trip.origin === starredTrip.origin &&
+                trip.return === starredTrip.return &&
+                trip.outbound.getTime() === starredTrip.outbound.getTime() &&
+                trip.days === starredTrip.days
+        );
+
+        setIsStarred(exists);
+    }, [latestTrip]);
+
+    function handleToggleStar() {
+        if (!latestTrip) return;
+
+        const trip: StarredTrip = {
+            origin: latestTrip.origin,
+            return: latestTrip.return,
+            outbound: latestTrip.outbound,
+            days: latestTrip.days
+        }
+
+        if (isStarred) {
+            removeStarred(trip);
+            setIsStarred(false);
+        } else {
+            addStarred(trip);
+            setIsStarred(true);
+        }
+    }
+
     return (
         <main className="app details-app">
             <button
@@ -95,6 +139,16 @@ export default function TripOverview() {
                     </p>
                 ) : (
                     <>
+                        <button
+                            type="button"
+                            className={`star-button ${isStarred ? "is-starred" : ""}`}
+                            onClick={handleToggleStar}
+                            aria-pressed={isStarred}
+                        >
+                            <span aria-hidden="true">{isStarred ? "★" : "☆"}</span>
+                            {isStarred ? "Remove from starred trips" : "Add to starred trips"}
+                        </button>
+
                         <TripLeg
                             label="OUTBOUND FLIGHT"
                             date={latestTrip.outbound}

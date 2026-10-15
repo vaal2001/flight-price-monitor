@@ -1,4 +1,4 @@
-import type { Trip } from "../../../models/tripModel";
+import type { StarredTrip, Trip } from "../../../models/tripModel";
 
 const modules = import.meta.glob("../../../../../data/*.json");
 
@@ -15,6 +15,17 @@ export function getAllSnapshots(): string[] {
   ].sort((a, b) => b.localeCompare(a)); // newest first
 
   return dates;
+}
+
+export function getAllStarred(): StarredTrip[] {
+  const stored = localStorage.getItem("starredTrips");
+
+  if (!stored) return [];
+
+  return JSON.parse(stored).map((trip: StarredTrip) => ({
+    ...trip,
+    outbound: new Date(trip.outbound)
+  }));
 }
 
 export async function loadTrips(snapshotName: string): Promise<Trip[]> {

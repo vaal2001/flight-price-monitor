@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { assignLanes, buildMonths, formatPrice, getAllSnapshots, getDate, getHighestPrice, getLowestPrice, getPriceColor, loadTrips } from "./utils/tripsOverviewUtils";
+import { assignLanes, buildMonths, formatPrice, getAllSnapshots, getAllStarred, getDate, getHighestPrice, getLowestPrice, getPriceColor, loadTrips } from "./utils/tripsOverviewUtils";
 import type { Timeline, Trip } from "../../models/tripModel";
 import "./tripsOverview.css";
 import { useNavigate, useSearchParams } from "react-router";
 
 export default function TripsOverview() {
+    const starred = getAllStarred();
+    
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
 
@@ -217,6 +219,92 @@ export default function TripsOverview() {
                     </span>
                 </div>
             </header>
+
+            <section className="starred-scetion">
+                <div className="starred-heading">
+                    <div>
+                        <p className="eyebrow">YOUR COLLECTION</p>
+                        <h2>Starred trips</h2>
+                        <p className="starred-subtitle">Your saved trips, all in one place</p>
+                    </div>
+
+                    <span className="starred-count">{starred.length} saved</span>
+                </div>
+
+                {starred.length === 0 ? (
+                    <div className="starred-empty">
+                        <span className="starred-empty-icon">☆</span>
+                        <p>No starred trips yet.</p>
+                    </div>
+                ): (
+                    <div className="starred-grid">
+                        {starred.map((trip, index) => (
+                            <article
+                                className="starred-card"
+                                key={`${trip.origin}-${trip.return}-${trip.outbound.getTime()}-${index}`}
+                            >
+                                <div className="starred-card-top">
+                                    <span className="starred-badge">
+                                        <span aria-hidden="true">★</span>Starred
+                                    </span>
+
+                                    <span className="starred-duration">{trip.days} days</span>
+                                </div>
+
+                                <div className="starred-route">
+                                    <div className="starred-airport">
+                                        <span className="starred-airport-label">FROM</span>
+                                        <strong>{trip.origin}</strong>
+                                    </div>
+
+                                    <div className="starred-route-line" aria-hidden="true">
+                                        <span />
+                                        <span className="starred-plane">✈</span>
+                                        <span />
+                                    </div>
+
+                                    <div className="starred-airport starred-airport-end">
+                                        <span className="starred-airport-label">RETURN</span>
+                                        <strong>{trip.return}</strong>
+                                    </div>
+                                </div>
+
+                                <div className="starred-date">
+                                    <span className="starred-date-icon" aria-hidden="true">▦</span>
+                                    <div>
+                                        <span className="starred-airport-label">DEPARTURE DATE</span>
+                                        <strong>
+                                            {trip.outbound.toLocaleDateString("en-GB", {
+                                                day: "numeric",
+                                                month: "long",
+                                                year: "numeric",
+                                            })}
+                                        </strong>
+                                    </div>
+                                </div>
+
+                                <button
+                                    className="starred-view-button"
+                                    type="button"
+                                    onClick={() => {
+                                        const params = new URLSearchParams({
+                                            origin: trip.origin,
+                                            return: trip.return,
+                                            outbound: `${trip.outbound.getFullYear()}-${String(trip.outbound.getMonth() + 1).padStart(2, "0")}-${String(trip.outbound.getDate()).padStart(2, "0")} 00:00:00`,
+                                            days: String(trip.days)
+                                        });
+
+                                        navigate(`/trip-overview?${params.toString()}`)
+                                    }}
+                                >
+                                    View trip
+                                    <span aria-hidden="true">→</span>
+                                </button>
+                            </article>
+                        ))}
+                    </div>
+                )}
+            </section>
 
             <section className="filters">
                 <label className="filter-field search-field">

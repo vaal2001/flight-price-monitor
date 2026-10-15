@@ -24,3 +24,10 @@ export type SearchedTrip = {
     searchDate: Date;
     trip: Trip;
 };
+
+export type StarredTrip = {
+    origin: string;
+    return: string;
+    outbound: Date;
+    days: number;
+}
