@@ -1,0 +1,313 @@
+{
+  "searchDate": "2026-10-22",
+  "results": [
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "AMS",
+      "outboundDate": "2026-11-15 00:00:00",
+      "returnDate": "2026-11-26 00:00:00",
+      "tripDays": 11,
+      "price": 218.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI2LTExLTE1agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjYtMTEtMjZqBwgBEgNBVEhyBwgBEgNBTVNAAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "EIN",
+      "outboundDate": "2026-11-12 00:00:00",
+      "returnDate": "2026-11-22 00:00:00",
+      "tripDays": 10,
+      "price": 235.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI2LTExLTEyagcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjYtMTEtMjJqBwgBEgNBVEhyBwgBEgNFSU5AAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "AMS",
+      "outboundDate": "2026-11-12 00:00:00",
+      "returnDate": "2026-11-22 00:00:00",
+      "tripDays": 10,
+      "price": 235.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI2LTExLTEyagcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjYtMTEtMjJqBwgBEgNBVEhyBwgBEgNBTVNAAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "BRU",
+      "outboundDate": "2027-04-08 00:00:00",
+      "returnDate": "2027-04-18 00:00:00",
+      "tripDays": 10,
+      "price": 251.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTA0LTA4agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDQtMThqBwgBEgNBVEhyBwgBEgNCUlVAAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "BRU",
+      "outboundDate": "2027-04-04 00:00:00",
+      "returnDate": "2027-04-15 00:00:00",
+      "tripDays": 11,
+      "price": 251.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTA0LTA0agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDQtMTVqBwgBEgNBVEhyBwgBEgNCUlVAAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "EIN",
+      "outboundDate": "2027-04-08 00:00:00",
+      "returnDate": "2027-04-18 00:00:00",
+      "tripDays": 10,
+      "price": 251.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTA0LTA4agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDQtMThqBwgBEgNBVEhyBwgBEgNFSU5AAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "EIN",
+      "outboundDate": "2027-04-11 00:00:00",
+      "returnDate": "2027-04-22 00:00:00",
+      "tripDays": 11,
+      "price": 251.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTA0LTExagcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDQtMjJqBwgBEgNBVEhyBwgBEgNFSU5AAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "AMS",
+      "outboundDate": "2027-04-01 00:00:00",
+      "returnDate": "2027-04-11 00:00:00",
+      "tripDays": 10,
+      "price": 251.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTA0LTAxagcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDQtMTFqBwgBEgNBVEhyBwgBEgNBTVNAAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "AMS",
+      "outboundDate": "2027-04-04 00:00:00",
+      "returnDate": "2027-04-15 00:00:00",
+      "tripDays": 11,
+      "price": 251.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTA0LTA0agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDQtMTVqBwgBEgNBVEhyBwgBEgNBTVNAAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "BRU",
+      "outboundDate": "2026-11-26 00:00:00",
+      "returnDate": "2026-12-06 00:00:00",
+      "tripDays": 10,
+      "price": 252.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI2LTExLTI2agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjYtMTItMDZqBwgBEgNBVEhyBwgBEgNCUlVAAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "EIN",
+      "outboundDate": "2026-10-25 00:00:00",
+      "returnDate": "2026-11-05 00:00:00",
+      "tripDays": 11,
+      "price": 252.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI2LTEwLTI1agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjYtMTEtMDVqBwgBEgNBVEhyBwgBEgNFSU5AAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "RTM",
+      "outboundDate": "2026-11-05 00:00:00",
+      "returnDate": "2026-11-15 00:00:00",
+      "tripDays": 10,
+      "price": 252.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI2LTExLTA1agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjYtMTEtMTVqBwgBEgNBVEhyBwgBEgNSVE1AAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "RTM",
+      "outboundDate": "2026-11-01 00:00:00",
+      "returnDate": "2026-11-12 00:00:00",
+      "tripDays": 11,
+      "price": 252.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI2LTExLTAxagcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjYtMTEtMTJqBwgBEgNBVEhyBwgBEgNSVE1AAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "BRU",
+      "outboundDate": "2027-03-14 00:00:00",
+      "returnDate": "2027-03-25 00:00:00",
+      "tripDays": 11,
+      "price": 272.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTAzLTE0agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDMtMjVqBwgBEgNBVEhyBwgBEgNCUlVAAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "EIN",
+      "outboundDate": "2027-03-14 00:00:00",
+      "returnDate": "2027-03-25 00:00:00",
+      "tripDays": 11,
+      "price": 272.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTAzLTE0agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDMtMjVqBwgBEgNBVEhyBwgBEgNFSU5AAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "RTM",
+      "outboundDate": "2027-03-07 00:00:00",
+      "returnDate": "2027-03-18 00:00:00",
+      "tripDays": 11,
+      "price": 272.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTAzLTA3agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDMtMThqBwgBEgNBVEhyBwgBEgNSVE1AAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "RTM",
+      "outboundDate": "2027-03-28 00:00:00",
+      "returnDate": "2027-04-08 00:00:00",
+      "tripDays": 11,
+      "price": 272.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTAzLTI4agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDQtMDhqBwgBEgNBVEhyBwgBEgNSVE1AAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "AMS",
+      "outboundDate": "2027-03-14 00:00:00",
+      "returnDate": "2027-03-25 00:00:00",
+      "tripDays": 11,
+      "price": 272.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTAzLTE0agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDMtMjVqBwgBEgNBVEhyBwgBEgNBTVNAAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "EIN",
+      "outboundDate": "2027-03-11 00:00:00",
+      "returnDate": "2027-03-21 00:00:00",
+      "tripDays": 10,
+      "price": 293.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTAzLTExagcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDMtMjFqBwgBEgNBVEhyBwgBEgNFSU5AAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "RTM",
+      "outboundDate": "2027-03-11 00:00:00",
+      "returnDate": "2027-03-21 00:00:00",
+      "tripDays": 10,
+      "price": 293.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTAzLTExagcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDMtMjFqBwgBEgNBVEhyBwgBEgNSVE1AAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "BRU",
+      "outboundDate": "2027-03-18 00:00:00",
+      "returnDate": "2027-03-28 00:00:00",
+      "tripDays": 10,
+      "price": 297.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTAzLTE4agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDMtMjhqBwgBEgNBVEhyBwgBEgNCUlVAAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "AMS",
+      "outboundDate": "2027-03-18 00:00:00",
+      "returnDate": "2027-03-28 00:00:00",
+      "tripDays": 10,
+      "price": 297.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTAzLTE4agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDMtMjhqBwgBEgNBVEhyBwgBEgNBTVNAAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "RTM",
+      "outboundDate": "2027-03-25 00:00:00",
+      "returnDate": "2027-04-04 00:00:00",
+      "tripDays": 10,
+      "price": 343.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI3LTAzLTI1agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDQtMDRqBwgBEgNBVEhyBwgBEgNSVE1AAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "BRU",
+      "outboundDate": "2026-12-13 00:00:00",
+      "returnDate": "2026-12-24 00:00:00",
+      "tripDays": 11,
+      "price": 344.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI2LTEyLTEzagcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjYtMTItMjRqBwgBEgNBVEhyBwgBEgNCUlVAAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "BRU",
+      "outboundDate": "2026-12-24 00:00:00",
+      "returnDate": "2027-01-03 00:00:00",
+      "tripDays": 10,
+      "price": 674.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI2LTEyLTI0agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDEtMDNqBwgBEgNBVEhyBwgBEgNCUlVAAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "EIN",
+      "outboundDate": "2026-12-24 00:00:00",
+      "returnDate": "2027-01-03 00:00:00",
+      "tripDays": 10,
+      "price": 674.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI2LTEyLTI0agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDEtMDNqBwgBEgNBVEhyBwgBEgNFSU5AAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "RTM",
+      "outboundDate": "2026-12-24 00:00:00",
+      "returnDate": "2027-01-03 00:00:00",
+      "tripDays": 10,
+      "price": 674.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI2LTEyLTI0agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDEtMDNqBwgBEgNBVEhyBwgBEgNSVE1AAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    },
+    {
+      "origin": "RTM",
+      "destination": "ATH",
+      "originReturn": "AMS",
+      "outboundDate": "2026-12-24 00:00:00",
+      "returnDate": "2027-01-03 00:00:00",
+      "tripDays": 10,
+      "price": 674.0,
+      "currency": "EUR",
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI2LTEyLTI0agcIARIDUlRNcgcIARIDQVRIGh4SCjIwMjctMDEtMDNqBwgBEgNBVEhyBwgBEgNBTVNAAUgBcAGCAQsI____________AZgBAw&hl=en&curr=EUR"
+    }
+  ]
+}
